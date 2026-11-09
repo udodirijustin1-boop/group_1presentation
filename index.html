@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N50,000 Campaign Giveaway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F3F5F9;--card:#fff;--ink:#0F2035;--muted:#5A6B80;--blue:#2B49FF;--blue-d:#1B32C9;--deep:#141F6E;--mint:#9CF2CF;--mint-l:#E3F8EF;--warn:#FFE7B0;--line:#DDE3EC}
+*{box-sizing:border-box}
+body{font-family:"IBM Plex Sans",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:16px;margin:0}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;margin:0 0 6px}
+:focus-visible{outline:3px solid var(--mint);outline-offset:2px;box-shadow:0 0 0 5px var(--blue)}
+header{background:#fff;border-bottom:1px solid var(--line);padding:12px 0}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo::before{content:"";flex:none;width:24px;height:24px;border-radius:8px;background:var(--blue);box-shadow:inset 0 0 0 5px var(--blue),inset 0 0 0 9px var(--mint)}
+.band{background:var(--blue);color:#fff;border-radius:0 0 36px 36px;padding:34px 0 50px}
+.band h1{font-size:1.8rem}
+.band p{opacity:.9;margin:0}
+main{margin-top:-30px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:16px;margin-bottom:20px;box-shadow:0 20px 40px -28px rgba(15,32,53,.35)}
+.sub{color:var(--muted);font-size:.95rem}
+label{font-weight:600;font-size:.9rem;display:block;margin-bottom:6px}
+input,select,textarea{font:400 1rem "IBM Plex Sans",sans-serif;padding:11px 13px;border:2px solid var(--line);border-radius:12px;background:#F8FAFC;color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);background:#fff;outline:none;box-shadow:0 0 0 4px rgba(43,73,255,.15)}
+.field{display:grid;gap:4px}
+.err{color:#B3261E;font-size:.85rem;min-height:1.1em}
+.btn{background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 24px;font:600 .95rem "IBM Plex Sans",sans-serif;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--blue-d)}
+.btn:disabled{opacity:.6;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn.ghost:hover{background:var(--paper)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.hidden{display:none !important}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--mint-l);color:#0A6B4F;border-radius:999px;padding:6px 14px;font-weight:600;font-size:.85rem}
+.badge.win{background:var(--warn);color:#7A4E00}
+.stat{display:flex;justify-content:space-between;align-items:center;background:var(--paper);border-radius:14px;padding:14px 16px}
+.stat b{font-size:1.4rem}
+.linkbox{display:flex;gap:8px}
+.linkbox input{background:#fff}
+.msg{font-size:.9rem;color:var(--muted)}
+.topbar{display:flex;justify-content:space-between;align-items:center}
+.toggle-link{background:none;border:0;color:var(--blue);cursor:pointer;font:600 .9rem inherit;padding:0}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 18px 50px}
+</style>
+</head>
+<body>
+
+<header><div class="wrap logo">N50,000 Campaign Giveaway</div></header>
+
+<div class="band">
+  <div class="wrap">
+    <h1>Win N50,000</h1>
+    <p>Enter below, then share your personal link. We'll credit winners by bank transfer.</p>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ENTRY / AUTH -->
+  <section id="authPanel" class="panel">
+    <div class="topbar">
+      <h2 id="authTitle">Enter the giveaway</h2>
+      <button class="toggle-link" id="authToggle">Already entered? Log in</button>
+    </div>
+    <p class="sub" id="authSub">Fill in your details to enter the N50,000 Campaign Giveaway.</p>
+
+    <form id="registerForm">
+      <div class="field"><label for="r-name">Full name</label><input id="r-name" required maxlength="100"></div>
+      <div class="field"><label for="r-email">Email</label><input id="r-email" type="email" required maxlength="200"></div>
+      <div class="field"><label for="r-phone">WhatsApp number</label><input id="r-phone" required maxlength="30" placeholder="e.g. 08012345678"></div>
+      <div class="field"><label for="r-dob">Date of birth</label><input id="r-dob" type="date" required autocomplete="bday"></div>
+      <div class="field"><label for="r-nin">National Identification Number (NIN)</label><input id="r-nin" inputmode="numeric" autocomplete="off" maxlength="11" minlength="11" pattern="[0-9]{11}" required placeholder="11-digit NIN"></div>
+      <div class="field"><label for="r-bvn">Bank Verification Number (BVN)</label><input id="r-bvn" inputmode="numeric" autocomplete="off" maxlength="11" minlength="11" pattern="[0-9]{11}" required placeholder="11-digit BVN"></div>
+      <p class="msg">Your NIN and BVN are checked securely through our identity-verification provider. We do not save the numbers or send them to Telegram. Only a verification status is retained. You must be 18 or older to enter.</p>
+      <div class="field"><label><input id="r-consent" type="checkbox" required style="width:auto;margin-right:8px">I consent to having my NIN and BVN checked for identity and age eligibility.</label></div>
+      <div class="field"><label for="r-pw">Password</label><input id="r-pw" type="password" required minlength="8" placeholder="At least 8 characters"></div>
+      <div class="err" id="r-err"></div>
+      <button class="btn" type="submit">Enter giveaway</button>
+    </form>
+
+    <form id="loginForm" class="hidden">
+      <div class="field"><label for="l-email">Email</label><input id="l-email" type="email" required></div>
+      <div class="field"><label for="l-pw">Password</label><input id="l-pw" type="password" required></div>
+      <div class="err" id="l-err"></div>
+      <button class="btn" type="submit">Log in</button>
+    </form>
+  </section>
+
+  <!-- DASHBOARD (after login) -->
+  <section id="dashPanel" class="panel hidden">
+    <div class="topbar">
+      <h2>Hey <span id="dashName"></span> \ud83d\udc4b</h2>
+      <button class="btn ghost" id="logoutBtn">Log out</button>
+    </div>
+
+    <div id="winnerBadge" class="badge win hidden">\ud83c\udf89 You've been selected as a winner!</div>
+
+    <div class="stat">
+      <span>Your referrals</span>
+      <b id="refCount">0</b>
+    </div>
+
+    <div class="field">
+      <label>Your referral link</label>
+      <p class="sub">Share this with 20 WhatsApp contacts to boost your entry.</p>
+      <div class="linkbox">
+        <input id="refLink" readonly>
+        <button class="btn ghost" id="copyBtn" type="button">Copy</button>
+      </div>
+    </div>
+
+    <div id="payoutSection" class="hidden">
+      <h3>Your payout details</h3>
+      <p class="sub">So we can credit you quickly if you win, add the bank account N50,000 should go to. We never ask for your card number, BVN, NIN, or online banking login \u2014 only these three details.</p>
+      <form id="payoutForm">
+        <div class="field"><label for="p-name">Account name</label><input id="p-name" required maxlength="120"></div>
+        <div class="field"><label for="p-num">Account number</label><input id="p-num" required maxlength="10" inputmode="numeric" placeholder="10 digits"></div>
+        <div class="field"><label for="p-bank">Bank</label><select id="p-bank" required></select></div>
+        <div class="err" id="p-err"></div>
+        <button class="btn" type="submit">Submit payout details</button>
+      </form>
+    </div>
+    <div id="payoutDone" class="badge hidden">\u2705 Payout details received \u2014 you'll be credited here if you win.</div>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section class="panel">
+    <h2>Top referrers</h2>
+    <p class="sub">Most shares so far.</p>
+    <table id="leaderTable"><tbody></tbody></table>
+  </section>
+
+</main>
+
+<footer>N50,000 Campaign Giveaway. NIN and BVN are used only for verification and are not retained by this site.</footer>
+
+<script>
+function api(path, opts) {
+  opts = opts || {};
+  return fetch(path, Object.assign({ headers: { 'Content-Type': 'application/json' } }, opts))
+    .then(function (r) { return r.json().catch(function(){return {};}).then(function (data) { return { ok: r.ok, status: r.status, data: data }; }); });
+}
+function $(id) { return document.getElementById(id); }
+function setErr(id, msg) { $(id).textContent = msg || ''; }
+
+var state = { user: null, banks: [] };
+
+// ---- auth panel toggle ----
+var showingLogin = false;
+$('authToggle').addEventListener('click', function () {
+  showingLogin = !showingLogin;
+  $('registerForm').classList.toggle('hidden', showingLogin);
+  $('loginForm').classList.toggle('hidden', !showingLogin);
+  $('authTitle').textContent = showingLogin ? 'Log in' : 'Enter the giveaway';
+  $('authToggle').textContent = showingLogin ? 'New here? Enter the giveaway' : 'Already entered? Log in';
+});
+
+$('registerForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  setErr('r-err', '');
+  var q = new URLSearchParams(location.search);
+  api('/api/register', { method: 'POST', body: JSON.stringify({
+    name: $('r-name').value, email: $('r-email').value, phone: $('r-phone').value,
+    dob: $('r-dob').value, nin: $('r-nin').value, bvn: $('r-bvn').value,
+    identity_consent: $('r-consent').checked, password: $('r-pw').value, ref: q.get('ref') || ''
+  }) }).then(function (r) {
+    if (!r.ok) { setErr('r-err', r.data.error || 'Something went wrong.'); return; }
+    onLoggedIn(r.data.user);
+  });
+});
+
+$('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  setErr('l-err', '');
+  api('/api/login', { method: 'POST', body: JSON.stringify({ email: $('l-email').value, password: $('l-pw').value }) })
+    .then(function (r) {
+      if (!r.ok) { setErr('l-err', r.data.error || 'Something went wrong.'); return; }
+      onLoggedIn(r.data.user);
+    });
+});
+
+$('logoutBtn').addEventListener('click', function () {
+  api('/api/logout', { method: 'POST' }).then(function () { location.reload(); });
+});
+
+$('copyBtn').addEventListener('click', function () {
+  $('refLink').select();
+  navigator.clipboard && navigator.clipboard.writeText($('refLink').value);
+  $('copyBtn').textContent = 'Copied!';
+  setTimeout(function () { $('copyBtn').textContent = 'Copy'; }, 1500);
+});
+
+$('payoutForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  setErr('p-err', '');
+  api('/api/payout', { method: 'POST', body: JSON.stringify({
+    account_name: $('p-name').value, account_number: $('p-num').value, bank_name: $('p-bank').value
+  }) }).then(function (r) {
+    if (!r.ok) { setErr('p-err', r.data.error || 'Something went wrong.'); return; }
+    $('payoutSection').classList.add('hidden');
+    $('payoutDone').classList.remove('hidden');
+  });
+});
+
+function onLoggedIn(user) {
+  state.user = user;
+  $('authPanel').classList.add('hidden');
+  $('dashPanel').classList.remove('hidden');
+  $('dashName').textContent = user.name;
+  $('refCount').textContent = user.referral_count;
+  $('refLink').value = location.origin + '/?ref=' + user.referral_code;
+  $('winnerBadge').classList.toggle('hidden', !user.is_winner);
+  $('payoutSection').classList.toggle('hidden', !!user.payout_submitted);
+  $('payoutDone').classList.toggle('hidden', !user.payout_submitted);
+}
+
+function loadBanks() {
+  return api('/api/campaign').then(function (r) {
+    if (!r.ok) return;
+    state.banks = r.data.banks || [];
+    var sel = $('p-bank');
+    sel.innerHTML = '<option value="">Choose your bank</option>' +
+      state.banks.map(function (b) { return '<option>' + b + '</option>'; }).join('');
+  });
+}
+
+function loadLeaderboard() {
+  api('/api/leaderboard').then(function (r) {
+    if (!r.ok) return;
+    var tbody = $('leaderTable').querySelector('tbody');
+    tbody.innerHTML = (r.data.leaderboard || []).map(function (row, i) {
+      return '<tr><td>#' + (i + 1) + '</td><td>' + row.name + '</td><td>' + row.referral_count + ' referrals</td></tr>';
+    }).join('') || '<tr><td class="sub">No referrals yet \u2014 be the first!</td></tr>';
+  });
+}
+
+loadBanks();
+$('r-dob').max = new Date().toISOString().slice(0, 10);
+loadLeaderboard();
+api('/api/me').then(function (r) { if (r.ok) onLoggedIn(r.data.user); });
+</script>
+</body>
+</html>
